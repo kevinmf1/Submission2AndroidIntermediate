@@ -10,4 +10,5 @@
     <string name="passwordVisible">Lihat Password</string>
     <string name="passwordLess">Password harus lebih dari 6 karakter</string>
     <string name="emailFormatWrong">Format email salah</string>
+    <string name="iconLogin">Hanya icon hiasan untuk login</string>
 </resources>
