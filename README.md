@@ -1,2 +1,2 @@
 # Submission1AndroidIntermediate
-Starter for my android intermediate submission
+Progress for my android intermediate submission 1 (i will done it asap and wish me luck)
