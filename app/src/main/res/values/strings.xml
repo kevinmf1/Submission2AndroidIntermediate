@@ -5,4 +5,9 @@
     <string name="email">Masukan email kamu</string>
     <string name="password">Masukan password kamu</string>
     <string name="login_button">Login</string>
+    <string name="register">Belum punya akun?</string>
+    <string name="register_button">Daftar</string>
+    <string name="passwordVisible">Lihat Password</string>
+    <string name="passwordLess">Password harus lebih dari 6 karakter</string>
+    <string name="emailFormatWrong">Format email salah</string>
 </resources>
