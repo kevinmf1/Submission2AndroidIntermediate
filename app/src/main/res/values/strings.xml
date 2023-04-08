@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Submission Android Intermediate</string>
+    <string name="login_description">Halo, selamat datang di Story App</string>
+    <string name="login">Login</string>
+    <string name="email">Masukan email kamu</string>
+    <string name="password">Masukan password kamu</string>
+    <string name="login_button">Login</string>
 </resources>
