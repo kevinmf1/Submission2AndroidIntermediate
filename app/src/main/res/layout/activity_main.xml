@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iconLogin"
         android:layout_width="114dp"
         android:layout_height="109dp"
         android:layout_marginTop="90dp"
@@ -19,65 +18,71 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvLoginDescription"
         android:layout_width="wrap_content"
+        android:alpha="0"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/login_description"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toEndOf="@+id/iconLogin"
+        app:layout_constraintStart_toStartOf="@+id/iconLogin"
+        app:layout_constraintTop_toBottomOf="@+id/iconLogin" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:alpha="0"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/login"
         android:textColor="@color/black"
         android:textSize="23sp"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/tvLoginDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginDescription" />
 
     <com.example.submissionandroidintermediate.customview.CVEmail
         android:id="@+id/CVEmail"
         android:layout_width="0dp"
+        android:alpha="0"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="@string/email"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintEnd_toEndOf="@+id/tvLoginDescription"
+        app:layout_constraintStart_toStartOf="@+id/tvLoginDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
 
     <com.example.submissionandroidintermediate.customview.CVPassword
-        android:id="@+id/CVPassword"
+        android:id="@+id/PasswordLogin"
         android:layout_width="0dp"
+        android:alpha="0"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="@string/password"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/tvLoginDescription"
+        app:layout_constraintStart_toStartOf="@+id/tvLoginDescription"
         app:layout_constraintTop_toBottomOf="@+id/CVEmail" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
+        android:alpha="0"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/black"
-        android:text="@string/login"
-        app:layout_constraintEnd_toEndOf="@+id/CVPassword"
-        app:layout_constraintStart_toStartOf="@+id/CVPassword"
+        android:text="@string/login_button"
+        app:layout_constraintEnd_toEndOf="@+id/PasswordLogin"
+        app:layout_constraintStart_toStartOf="@+id/PasswordLogin"
         app:layout_constraintTop_toBottomOf="@+id/seePassword" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvRegistDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:alpha="0"
         android:layout_marginEnd="32dp"
         android:text="@string/register"
         android:textColor="@color/black"
@@ -89,18 +94,20 @@
         android:id="@+id/seePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:text="@string/passwordVisible"
-        app:layout_constraintStart_toStartOf="@+id/CVPassword"
-        app:layout_constraintTop_toBottomOf="@+id/CVPassword" />
+        app:layout_constraintStart_toStartOf="@+id/PasswordLogin"
+        app:layout_constraintTop_toBottomOf="@+id/PasswordLogin" />
 
     <TextView
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:layout_marginStart="4dp"
         android:text="@string/register_button"
         android:textColor="@color/register_click"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintStart_toEndOf="@+id/tvRegistDescription"
+        app:layout_constraintTop_toTopOf="@+id/tvRegistDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
