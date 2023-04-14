@@ -10,7 +10,7 @@ import com.example.submissionandroidintermediate.R
 
 class CVName : AppCompatEditText, View.OnFocusChangeListener {
 
-    private var isNameValid = false
+    var isNameValid = false
 
     constructor(context: Context) : super(context) {
         init()
@@ -20,7 +20,11 @@ class CVName : AppCompatEditText, View.OnFocusChangeListener {
         init()
     }
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         init()
     }
 

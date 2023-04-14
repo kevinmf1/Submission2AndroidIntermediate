@@ -11,15 +11,15 @@ import kotlinx.coroutines.flow.map
 
 class UserPreferences private constructor(private val dataStore: DataStore<Preferences>) {
 
-    fun getLoginState(): Flow<Boolean> {
+    fun getLoginSession(): Flow<Boolean> {
         return dataStore.data.map { preferences ->
-            preferences[LOGIN_STATE] ?: false
+            preferences[LOGIN_SESSION] ?: false
         }
     }
 
-    suspend fun saveLoginState(isDarkModeActive: Boolean) {
+    suspend fun saveLoginSession(loginSession: Boolean) {
         dataStore.edit { preferences ->
-            preferences[LOGIN_STATE] = isDarkModeActive
+            preferences[LOGIN_SESSION] = loginSession
         }
     }
 
@@ -49,6 +49,13 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         }
     }
 
+    suspend fun clearDataLogin() {
+        dataStore.edit { preferences ->
+            preferences.remove(LOGIN_SESSION)
+            preferences.remove(TOKEN)
+            preferences.remove(NAME)
+        }
+    }
 
     companion object {
         @Volatile
@@ -62,7 +69,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
             }
         }
 
-        private val LOGIN_STATE = booleanPreferencesKey("login_state")
+        private val LOGIN_SESSION = booleanPreferencesKey("login_session")
         private val TOKEN = stringPreferencesKey("token")
         private val NAME = stringPreferencesKey("name")
 

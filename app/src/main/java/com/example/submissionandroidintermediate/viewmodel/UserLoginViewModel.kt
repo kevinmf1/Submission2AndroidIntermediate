@@ -9,13 +9,13 @@ import kotlinx.coroutines.launch
 
 class UserLoginViewModel(private val pref: UserPreferences) : ViewModel() {
 
-    fun getLoginState(): LiveData<Boolean> {
-        return pref.getLoginState().asLiveData()
+    fun getLoginSession(): LiveData<Boolean> {
+        return pref.getLoginSession().asLiveData()
     }
 
-    fun saveLoginState(loginState: Boolean) {
+    fun saveLoginSession(loginSession: Boolean) {
         viewModelScope.launch {
-            pref.saveLoginState(loginState)
+            pref.saveLoginSession(loginSession)
         }
     }
 
@@ -36,6 +36,12 @@ class UserLoginViewModel(private val pref: UserPreferences) : ViewModel() {
     fun saveName(token: String) {
         viewModelScope.launch {
             pref.saveName(token)
+        }
+    }
+
+    fun clearDataLogin() {
+        viewModelScope.launch {
+            pref.clearDataLogin()
         }
     }
 

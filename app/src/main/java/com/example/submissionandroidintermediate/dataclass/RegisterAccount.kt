@@ -1,15 +1,15 @@
-package com.example.submissionandroidintermediate
+package com.example.submissionandroidintermediate.dataclass
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-data class RegisterAccount(
+data class RegisterDataAccount(
     var name: String,
     var email: String,
     var password: String
 )
 
-data class LoginAccount(
+data class LoginDataAccount(
     var email: String,
     var password: String
 )

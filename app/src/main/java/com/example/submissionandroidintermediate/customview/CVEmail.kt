@@ -11,7 +11,9 @@ import com.example.submissionandroidintermediate.R
 
 class CVEmail : AppCompatEditText, View.OnFocusChangeListener {
 
-    private var isEmailValid = false
+    var isEmailValid = false
+    private lateinit var emailSame: String
+    private var isEmailHasTaken = false
 
     constructor(context: Context) : super(context) {
         init()
@@ -21,7 +23,11 @@ class CVEmail : AppCompatEditText, View.OnFocusChangeListener {
         init()
     }
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         init()
     }
 
@@ -39,6 +45,7 @@ class CVEmail : AppCompatEditText, View.OnFocusChangeListener {
     override fun onFocusChange(v: View?, hasFocus: Boolean) {
         if (!hasFocus) {
             validateEmail()
+            validateEmailHasTaken()
         }
     }
 
@@ -46,6 +53,24 @@ class CVEmail : AppCompatEditText, View.OnFocusChangeListener {
         isEmailValid = Patterns.EMAIL_ADDRESS.matcher(text.toString().trim()).matches()
         error = if (!isEmailValid) {
             resources.getString(R.string.emailFormatWrong)
+        } else {
+            null
+        }
+    }
+
+    private fun validateEmailHasTaken() {
+        error = if (isEmailHasTaken && text.toString().trim() == emailSame) {
+            resources.getString(R.string.emailTaken)
+        } else {
+            null
+        }
+    }
+
+    fun setErrorMessage(message: String, email: String) {
+        emailSame = email
+        isEmailHasTaken = true
+        error = if (text.toString().trim() == emailSame) {
+            message
         } else {
             null
         }
