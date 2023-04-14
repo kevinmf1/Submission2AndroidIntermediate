@@ -11,7 +11,7 @@ import com.example.submissionandroidintermediate.R
 
 class CVIsPasswordSame : AppCompatEditText, View.OnFocusChangeListener {
 
-    private var isPasswordValid = false
+    var isPasswordValid = false
 
     init {
         init()
@@ -48,7 +48,7 @@ class CVIsPasswordSame : AppCompatEditText, View.OnFocusChangeListener {
         val password = text.toString().trim()
         val confirmPassword = (parent as ViewGroup).findViewById<CVPassword>(R.id.RegistPassword).text.toString().trim()
 
-        isPasswordValid = password.length >= 6 && password == confirmPassword
+        isPasswordValid = password.length >= 8 && password == confirmPassword
         error = if (!isPasswordValid) {
             resources.getString(R.string.passwordNotMatch)
         } else {

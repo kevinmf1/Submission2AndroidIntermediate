@@ -16,4 +16,8 @@
 
     <color name="grey">#393646</color>
     <color name="navy">#070A52</color>
+
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/black</item>
+    </style>
 </resources>

@@ -6,25 +6,47 @@
     <string name="registerDescription">Silahkan masukkan data akun kamu</string>
     <string name="storySplash">Ga punya temen cerita? ceritain di sini aja!</string>
     <string name="bottomSplash">Created by Bangkit Cohort</string>
+    <string name="createAccount">Buat Akun</string>
+    <string name="btnFloating">untuk membuat konten baru</string>
+    <string name="noData">Data tidak ditemukan</string>
+    <string name="changeLanguage">Ganti Bahasa</string>
+    <string name="home">Beranda</string>
+
+    <string name="nameUser">Nama</string>
+    <string name="timeCreatedContent">13 April 2023, 12:18:54</string>
+    <string name="content">Gambar ini adalah salah satu bagian dari story</string>
+    <string name="imageDataNone">Ditampilkan ketika data kosong</string>
 
     <string name="email">Masukan email kamu</string>
     <string name="emailFormatWrong">Format email salah</string>
+    <string name="emailTaken">Email yang anda masukan sudah terdaftar, silahkan ganti email</string>
+    <string name="failedRegist">Registrasi gagal, silahkan coba lagi</string>
 
     <string name="password">Masukan password kamu</string>
     <string name="passwordConfirm">Konfirmasi password kamu</string>
     <string name="passwordVisible">Lihat Password</string>
-    <string name="passwordLess">Password harus lebih dari 6 karakter</string>
+    <string name="passwordLess">Password minimal harus 8 karakter</string>
     <string name="passwordNotMatch">Password tidak sama</string>
+    <string name="passwordAccountWrong">Password yang anda masukan salah</string>
 
-    <string name="login">Login</string>
+    <string name="tvLogin">Masuk Akun</string>
     <string name="login_button">Login</string>
+    <string name="invalidLogin">Masukan data akun dengan benar!</string>
     <string name="registerHeader">Daftar Akun</string>
     <string name="register">Belum punya akun?</string>
     <string name="register_button">Daftar</string>
     <string name="registerCreate">Buat Akun</string>
 
-
     <string name="nameNone">Nama tidak boleh kosong</string>
+    <string name="emailNone">Email tidak boleh kosong</string>
+    <string name="passwordNone">Password tidak boleh kosong</string>
+    <string name="passwordConfirmNone">Konfirmasi password tidak boleh kosong</string>
     <string name="name">Masukan nama kamu</string>
+
+    <string name="logout">Keluar</string>
+    <string name="logoutDescription">Apakah anda yakin ingin keluar?</string>
+    <string name="logoutButton">Keluar</string>
+    <string name="SuccessLogout">Berhasil keluar</string>
+    <string name="cancelLogout">Batal</string>
 
 </resources>
