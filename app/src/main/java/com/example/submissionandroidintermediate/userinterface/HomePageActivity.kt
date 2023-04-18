@@ -42,9 +42,8 @@ class HomePageActivity : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvStories.addItemDecoration(itemDecoration)
 
-        val preferences = UserPreferences.getInstance(dataStore)
         val userLoginViewModel =
-            ViewModelProvider(this, ViewModelFactory(preferences))[UserLoginViewModel::class.java]
+            ViewModelProvider(this, ViewModelFactory(pref))[UserLoginViewModel::class.java]
 
         userLoginViewModel.getToken().observe(this) {
             token = it

@@ -1,7 +1,7 @@
 package com.example.submissionandroidintermediate.userinterface
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.submissionandroidintermediate.R
 import com.example.submissionandroidintermediate.adapter.StoryListAdapter

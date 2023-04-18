@@ -1,12 +1,12 @@
 package com.example.submissionandroidintermediate.userinterface
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.submissionandroidintermediate.R
 import com.example.submissionandroidintermediate.UserPreferences

@@ -13,7 +13,6 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class StoryListAdapter(private val listStory: List<StoryDetail>) :
     RecyclerView.Adapter<StoryListAdapter.ListViewHolder>() {
 

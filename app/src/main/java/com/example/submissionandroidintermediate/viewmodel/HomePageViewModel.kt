@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.submissionandroidintermediate.api.APIConfig
-import com.example.submissionandroidintermediate.dataclass.RegisterDataAccount
-import com.example.submissionandroidintermediate.dataclass.ResponseDetail
 import com.example.submissionandroidintermediate.dataclass.ResponseStory
 import com.example.submissionandroidintermediate.dataclass.StoryDetail
 import retrofit2.Call
@@ -42,6 +40,7 @@ class HomePageViewModel : ViewModel() {
                     _message.value = response.message()
                 }
             }
+
             override fun onFailure(call: Call<ResponseStory>, t: Throwable) {
                 _isLoading.value = false
                 isError = true

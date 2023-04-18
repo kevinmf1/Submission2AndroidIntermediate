@@ -3,11 +3,9 @@ package com.example.submissionandroidintermediate.userinterface
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.submissionandroidintermediate.UserPreferences
 import com.example.submissionandroidintermediate.databinding.ActivitySplashScreenBinding

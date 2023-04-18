@@ -26,6 +26,7 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     private val mainViewModel: MainViewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
@@ -126,8 +127,10 @@ class MainActivity : AppCompatActivity() {
                 )
                 mainViewModel.getResponseLogin(requestLogin)
             } else {
-                if(!binding.CVEmail.isEmailValid) binding.CVEmail.error = getString(R.string.emailNone)
-                if(!binding.PasswordLogin.isPasswordValid) binding.PasswordLogin.error = getString(R.string.passwordNone)
+                if (!binding.CVEmail.isEmailValid) binding.CVEmail.error =
+                    getString(R.string.emailNone)
+                if (!binding.PasswordLogin.isPasswordValid) binding.PasswordLogin.error =
+                    getString(R.string.passwordNone)
 
                 Toast.makeText(this, R.string.invalidLogin, Toast.LENGTH_SHORT).show()
             }
