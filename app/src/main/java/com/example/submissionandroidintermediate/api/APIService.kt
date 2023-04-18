@@ -16,8 +16,15 @@ interface APIService {
 
     @GET("stories")
     fun getStory(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
     ): Call<ResponseStory>
+
+    @GET("stories")
+    fun getStory2(
+        @Header("Authorization") token: String,
+        @Query("page") page: Int? = null,
+        @Query("size") size: Int? = null,
+    ): ResponseStory
 
     @Multipart
     @POST("stories")

@@ -10,8 +10,6 @@ interface StoryRepository {
 
     fun getStory(token: String): LiveData<PagingData<StoryItemEntity>>
 
-    fun getStoryWithLocation(token: String): LiveData<Result<List<StoryItemEntity>>>
-
     fun addStory(
         token: String,
         file: File,
