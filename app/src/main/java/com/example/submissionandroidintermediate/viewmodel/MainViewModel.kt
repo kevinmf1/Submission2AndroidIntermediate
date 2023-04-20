@@ -75,7 +75,7 @@ class MainViewModel : ViewModel() {
                     isErrorRegist = true
                     when (response.code()) {
                         400 -> _messageRegist.value =
-                            "Email yang anda masukan sudah terdaftar, silahkan ganti email"
+                            "1"
                         408 -> _messageRegist.value =
                             "Koneksi internet anda lambat, silahkan coba lagi"
                         else -> _messageRegist.value = "Pesan error: " + response.message()

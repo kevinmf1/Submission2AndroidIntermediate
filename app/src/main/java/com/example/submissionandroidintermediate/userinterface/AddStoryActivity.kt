@@ -14,12 +14,17 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.submissionandroidintermediate.R
 import com.example.submissionandroidintermediate.UserPreferences
 import com.example.submissionandroidintermediate.databinding.ActivityAddStoryBinding
 import com.example.submissionandroidintermediate.viewmodel.AddStoryViewModel
 import com.example.submissionandroidintermediate.viewmodel.UserLoginViewModel
 import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
+import id.zelory.compressor.Compressor
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -37,6 +42,7 @@ class AddStoryActivity : AppCompatActivity() {
     private lateinit var token: String
 
     private var getFile: File? = null
+    private lateinit var fileFinal: File
 
     private val addStoryViewModel: AddStoryViewModel by lazy {
         ViewModelProvider(this)[AddStoryViewModel::class.java]
@@ -87,17 +93,38 @@ class AddStoryActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val file = getFile as File
-            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
-            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "photo",
-                file.name,
-                requestImageFile
-            )
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    val file = getFile as File
 
-            val desPart = des.toRequestBody("text/plain".toMediaType())
+                    var compressedFile: File? = null
+                    var compressedFileSize = file.length()
 
-            addStoryViewModel.upload(imageMultipart, desPart, token)
+                    // Compress the file until its size is less than or equal to 1MB
+                    while (compressedFileSize > 1 * 1024 * 1024) {
+                        compressedFile = withContext(Dispatchers.Default) {
+                            Compressor.compress(applicationContext, file)
+                        }
+                        compressedFileSize = compressedFile.length()
+                    }
+
+                    fileFinal = compressedFile ?: file
+
+                }
+
+                // use the upload file to upload to server
+                val requestImageFile =
+                    fileFinal.asRequestBody("image/jpeg".toMediaTypeOrNull())
+                val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                    "photo",
+                    fileFinal.name,
+                    requestImageFile
+                )
+
+                val desPart = des.toRequestBody("text/plain".toMediaType())
+
+                addStoryViewModel.upload(imageMultipart, desPart, token)
+            }
         }
 
         binding.cameraButton.setOnClickListener {

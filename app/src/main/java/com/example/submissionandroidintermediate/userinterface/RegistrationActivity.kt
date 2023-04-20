@@ -96,9 +96,9 @@ class RegistrationActivity : AppCompatActivity() {
             )
             mainViewModel.getResponseLogin(userLogin)
         } else {
-            if (message == resources.getString(R.string.emailTaken)) {
-                binding.RegistEmail.setErrorMessage(message, binding.RegistEmail.text.toString())
-                Toast.makeText(this, resources.getString(R.string.failedRegist), Toast.LENGTH_SHORT)
+            if (message == "1") {
+                binding.RegistEmail.setErrorMessage(resources.getString(R.string.emailTaken), binding.RegistEmail.text.toString())
+                Toast.makeText(this, resources.getString(R.string.emailTaken), Toast.LENGTH_SHORT)
                     .show()
             } else {
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

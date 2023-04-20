@@ -73,7 +73,9 @@
     <string name="imageSplashDesc">This is the Bangkit logo on the splash screen</string>
     <string name="warningAddImage">Upload photos first</string>
     <string name="warningAddDescription">Add a description first</string>
+
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
