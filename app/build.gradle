@@ -15,6 +15,10 @@ android {
     }
 
     defaultConfig {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        manifestPlaceholders = [googleMapsApiKey: "${properties.getProperty('MAPS_API_KEY')}"]
+
         applicationId "com.example.submissionandroidintermediate"
         minSdk 24
         targetSdk 33
@@ -44,6 +48,11 @@ android {
 }
 
 dependencies {
+
+    //maps
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
 
     implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
     implementation 'androidx.room:room-paging:2.5.1'

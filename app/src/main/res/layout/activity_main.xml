@@ -125,6 +125,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/ProgressBarStyle"
         android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

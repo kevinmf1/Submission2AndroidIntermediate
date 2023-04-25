@@ -21,7 +21,6 @@ import com.example.submissionandroidintermediate.viewmodel.HomePageViewModel
 import com.example.submissionandroidintermediate.viewmodel.UserLoginViewModel
 import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
 
-
 class HomePageActivity : AppCompatActivity() {
     private val pref = UserPreferences.getInstance(dataStore)
     private lateinit var binding: ActivityHomePageBinding
@@ -132,6 +131,10 @@ class HomePageActivity : AppCompatActivity() {
             }
             R.id.logout -> {
                 showAlertDialog()
+                true
+            }
+            R.id.mapsNavigate -> {
+                startActivity(Intent(this, MapsActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

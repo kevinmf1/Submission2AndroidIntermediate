@@ -22,6 +22,7 @@
     <string name="cameraChoose">Camera</string>
     <string name="galleryChoose">Gallery</string>
     <string name="descriptionStory">Story Description</string>
+    <string name="storyImageDesc">Story Image Desc</string>
     <string name="btnPost">Share Story</string>
     <string name="choose_picture">Choose Picture</string>
     <string name="choose_camera">Choose Camera</string>
@@ -78,4 +79,16 @@
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="maps">See Maps</string>
+    <string name="storyError">Terdapat kesalahan ketika memuat Story</string>
+
+    <string name="standardMap">Map Standar</string>
+    <string name="nightMap">Map Malam</string>
+
+    <string name="useMyLocation">Use my location</string>
+    <string name="usePickLocation">Use the location that i pick</string>
+    <string name="pickLocation">Click map to pick location</string>
+    <string name="icon_map_pin">Icon map pin</string>
+    <string name="yourLocation">Your Location</string>
+    <string name="title_activity_pick_location2">PickLocationActivity2</string>
 </resources>

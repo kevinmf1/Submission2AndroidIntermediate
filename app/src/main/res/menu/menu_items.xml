@@ -13,6 +13,13 @@
         <menu>
 
             <item
+                android:id="@+id/mapsNavigate"
+                android:icon="@drawable/baseline_map_24"
+                android:iconTint="@color/black"
+                android:title="@string/maps"
+                app:showAsAction="never" />
+
+            <item
                 android:id="@+id/refreshApp"
                 android:icon="@drawable/baseline_refresh_24"
                 android:iconTint="@color/black"

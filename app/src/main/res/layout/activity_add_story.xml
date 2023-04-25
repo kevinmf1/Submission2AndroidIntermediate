@@ -9,18 +9,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="30dp">
+        android:paddingBottom="15dp">
 
         <Button
             android:id="@+id/btnPostStory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/btnPost"
             android:backgroundTint="@color/button"
+            android:text="@string/btnPost"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tv_des"
-            app:layout_constraintStart_toStartOf="@+id/tv_des"
-            app:layout_constraintTop_toBottomOf="@+id/tv_des" />
+            app:layout_constraintStart_toStartOf="@+id/tv_des" />
 
         <TextView
             android:id="@+id/tvUsers"
@@ -41,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/descriptionStory"
+            android:contentDescription="@string/storyImageDesc"
             app:layout_constraintEnd_toEndOf="@+id/tvUsers"
             app:layout_constraintStart_toStartOf="@+id/tvUsers"
             app:layout_constraintTop_toBottomOf="@+id/tvUsers"
@@ -75,7 +74,7 @@
             android:id="@+id/tv_des"
             android:layout_width="0dp"
             android:layout_height="160dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
             android:autofillHints="Description"
             android:background="@drawable/border_description"
             android:gravity="top|left"
@@ -85,9 +84,10 @@
             android:maxLines="8"
             android:padding="15dp"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnPostStory"
             app:layout_constraintEnd_toEndOf="@+id/imageStoryUpload"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/imageStoryUpload"
-            app:layout_constraintTop_toBottomOf="@+id/cameraButton"
             tools:ignore="RtlHardcoded" />
 
         <ProgressBar
@@ -101,6 +101,39 @@
             app:layout_constraintEnd_toEndOf="@+id/imageStoryUpload"
             app:layout_constraintStart_toStartOf="@+id/imageStoryUpload"
             app:layout_constraintTop_toBottomOf="@+id/tvUsers" />
+
+        <LinearLayout
+            android:id="@+id/ll_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/tv_des"
+            app:layout_constraintEnd_toEndOf="@+id/imageStoryUpload"
+            app:layout_constraintStart_toStartOf="@+id/imageStoryUpload"
+            app:layout_constraintTop_toBottomOf="@+id/cameraButton">
+
+            <ImageView
+                android:id="@+id/imageLocation"
+                android:layout_width="37dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:contentDescription="@string/icon_map_pin"
+                app:srcCompat="@drawable/baseline_location_on_24" />
+
+            <TextView
+                android:id="@+id/detailLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:maxLines="3"
+                tools:text="dddddd" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

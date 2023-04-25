@@ -22,6 +22,7 @@
     <string name="cameraChoose">Kamera</string>
     <string name="galleryChoose">Galeri</string>
     <string name="descriptionStory">Deskripsi Story</string>
+    <string name="storyImageDesc">Deskripsi Gambar Story</string>
     <string name="btnPost">Bagikan Story</string>
     <string name="choose_picture">Pilih Gambar</string>
     <string name="choose_camera">Pilih Kamera</string>
@@ -73,4 +74,21 @@
     <string name="imageSplashDesc">Ini adalah logo bangkit di splashscreen</string>
     <string name="warningAddImage">Upload foto terlebih dahulu</string>
     <string name="warningAddDescription">Tambahkan deskripsi terlebih dahulu</string>
+
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="maps">See Maps</string>
+    <string name="storyError">Terdapat kesalahan ketika memuat Story</string>
+
+    <string name="standardMap">Map Standar</string>
+    <string name="nightMap">Map Malam</string>
+
+    <string name="useMyLocation">Use my location</string>
+    <string name="usePickLocation">Use the location that i pick</string>
+    <string name="pickLocation">Click map to pick location</string>
+    <string name="icon_map_pin">Icon map pin</string>
+    <string name="yourLocation">Lokasi Kamu</string>
+
 </resources>

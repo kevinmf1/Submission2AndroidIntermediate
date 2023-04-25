@@ -134,6 +134,11 @@ class AddStoryActivity : AppCompatActivity() {
         binding.galleryButton.setOnClickListener {
             startGallery()
         }
+
+        binding.llLocation.setOnClickListener {
+            val intent = Intent(this, PickLocationActivity2::class.java)
+            startActivity(intent)
+        }
     }
 
     private var anyPhoto = false
