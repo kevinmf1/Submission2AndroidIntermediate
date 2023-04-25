@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.submissionandroidintermediate.UserPreferences
 import com.example.submissionandroidintermediate.databinding.ActivitySplashScreenBinding
-import com.example.submissionandroidintermediate.viewmodel.UserLoginViewModel
+import com.example.submissionandroidintermediate.viewmodel.DataStoreViewModel
 import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -22,7 +22,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val pref = UserPreferences.getInstance(dataStore)
         val loginViewModel =
-            ViewModelProvider(this, ViewModelFactory(pref))[UserLoginViewModel::class.java]
+            ViewModelProvider(this, ViewModelFactory(pref))[DataStoreViewModel::class.java]
 
         loginViewModel.getLoginSession().observe(this) { isLoggedIn ->
 

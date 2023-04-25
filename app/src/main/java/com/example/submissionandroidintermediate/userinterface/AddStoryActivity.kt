@@ -1,5 +1,6 @@
 package com.example.submissionandroidintermediate.userinterface
 
+import android.app.Activity
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
@@ -19,8 +20,9 @@ import com.example.submissionandroidintermediate.R
 import com.example.submissionandroidintermediate.UserPreferences
 import com.example.submissionandroidintermediate.databinding.ActivityAddStoryBinding
 import com.example.submissionandroidintermediate.viewmodel.AddStoryViewModel
-import com.example.submissionandroidintermediate.viewmodel.UserLoginViewModel
+import com.example.submissionandroidintermediate.viewmodel.DataStoreViewModel
 import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
+import com.google.android.gms.maps.model.LatLng
 import id.zelory.compressor.Compressor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,6 +45,7 @@ class AddStoryActivity : AppCompatActivity() {
 
     private var getFile: File? = null
     private lateinit var fileFinal: File
+    private var latlng: LatLng? = null
 
     private val addStoryViewModel: AddStoryViewModel by lazy {
         ViewModelProvider(this)[AddStoryViewModel::class.java]
@@ -59,14 +62,14 @@ class AddStoryActivity : AppCompatActivity() {
         ifClicked()
 
         val preferences = UserPreferences.getInstance(dataStore)
-        val userLoginViewModel =
-            ViewModelProvider(this, ViewModelFactory(preferences))[UserLoginViewModel::class.java]
+        val dataStoreViewModel =
+            ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
 
-        userLoginViewModel.getToken().observe(this) {
+        dataStoreViewModel.getToken().observe(this) {
             token = it
         }
 
-        userLoginViewModel.getName().observe(this) {
+        dataStoreViewModel.getName().observe(this) {
             binding.tvUsers.text = StringBuilder(getString(R.string.post_as)).append(" ").append(it)
         }
 
@@ -78,6 +81,20 @@ class AddStoryActivity : AppCompatActivity() {
             showLoading(it)
         }
     }
+
+    private val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.let { data ->
+                    val address = data.getStringExtra("address")
+                    val lat = data.getDoubleExtra("lat", 0.0)
+                    val lng = data.getDoubleExtra("lng", 0.0)
+                    latlng = LatLng(lat, lng)
+
+                    binding.detailLocation.text = address
+                }
+            }
+        }
 
     private fun ifClicked() {
         binding.btnPostStory.setOnClickListener {
@@ -136,8 +153,8 @@ class AddStoryActivity : AppCompatActivity() {
         }
 
         binding.llLocation.setOnClickListener {
-            val intent = Intent(this, PickLocationActivity2::class.java)
-            startActivity(intent)
+            val intent = Intent(this, PickLocationActivity::class.java)
+            resultLauncher.launch(intent)
         }
     }
 

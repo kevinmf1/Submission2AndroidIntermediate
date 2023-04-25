@@ -90,5 +90,5 @@
     <string name="pickLocation">Click map to pick location</string>
     <string name="icon_map_pin">Icon map pin</string>
     <string name="yourLocation">Lokasi Kamu</string>
-
+    <string name="start_point">Start Point</string>
 </resources>

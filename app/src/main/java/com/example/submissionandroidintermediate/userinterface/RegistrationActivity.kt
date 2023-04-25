@@ -14,7 +14,7 @@ import com.example.submissionandroidintermediate.databinding.ActivityRegistratio
 import com.example.submissionandroidintermediate.dataclass.LoginDataAccount
 import com.example.submissionandroidintermediate.dataclass.RegisterDataAccount
 import com.example.submissionandroidintermediate.viewmodel.MainViewModel
-import com.example.submissionandroidintermediate.viewmodel.UserLoginViewModel
+import com.example.submissionandroidintermediate.viewmodel.DataStoreViewModel
 import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
 
 class RegistrationActivity : AppCompatActivity() {
@@ -34,9 +34,9 @@ class RegistrationActivity : AppCompatActivity() {
 
         // access dataStore from UserPreferences and when login session is true, go to HomePageActivity and finish this activity
         val pref = UserPreferences.getInstance(dataStore)
-        val userLoginViewModel =
-            ViewModelProvider(this, ViewModelFactory(pref))[UserLoginViewModel::class.java]
-        userLoginViewModel.getLoginSession().observe(this) { sessionTrue ->
+        val dataStoreViewModel =
+            ViewModelProvider(this, ViewModelFactory(pref))[DataStoreViewModel::class.java]
+        dataStoreViewModel.getLoginSession().observe(this) { sessionTrue ->
             if (sessionTrue) {
                 val intent = Intent(this@RegistrationActivity, HomePageActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -59,7 +59,7 @@ class RegistrationActivity : AppCompatActivity() {
             responseLogin(
                 mainViewModel.isErrorLogin,
                 messageLogin,
-                userLoginViewModel
+                dataStoreViewModel
             )
         }
 
@@ -71,14 +71,14 @@ class RegistrationActivity : AppCompatActivity() {
     private fun responseLogin(
         isError: Boolean,
         message: String,
-        userLoginViewModel: UserLoginViewModel
+        dataStoreViewModel: DataStoreViewModel
     ) {
         if (!isError) {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             val user = mainViewModel.userLogin.value
-            userLoginViewModel.saveLoginSession(true)
-            userLoginViewModel.saveToken(user?.loginResult!!.token)
-            userLoginViewModel.saveName(user.loginResult.name)
+            dataStoreViewModel.saveLoginSession(true)
+            dataStoreViewModel.saveToken(user?.loginResult!!.token)
+            dataStoreViewModel.saveName(user.loginResult.name)
         } else {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }

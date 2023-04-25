@@ -97,6 +97,7 @@
             android:layout_height="wrap_content"
             android:theme="@style/ProgressBarStyleWhite"
             android:visibility="gone"
+            tools:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/imageStoryUpload"
             app:layout_constraintEnd_toEndOf="@+id/imageStoryUpload"
             app:layout_constraintStart_toStartOf="@+id/imageStoryUpload"
@@ -131,7 +132,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
                 android:maxLines="3"
-                tools:text="dddddd" />
+                android:text="@string/yourLocation" />
 
         </LinearLayout>
 

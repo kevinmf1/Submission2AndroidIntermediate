@@ -18,7 +18,7 @@ import com.example.submissionandroidintermediate.adapter.StoryListAdapter
 import com.example.submissionandroidintermediate.databinding.ActivityHomePageBinding
 import com.example.submissionandroidintermediate.dataclass.StoryDetail
 import com.example.submissionandroidintermediate.viewmodel.HomePageViewModel
-import com.example.submissionandroidintermediate.viewmodel.UserLoginViewModel
+import com.example.submissionandroidintermediate.viewmodel.DataStoreViewModel
 import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
 
 class HomePageActivity : AppCompatActivity() {
@@ -41,10 +41,10 @@ class HomePageActivity : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvStories.addItemDecoration(itemDecoration)
 
-        val userLoginViewModel =
-            ViewModelProvider(this, ViewModelFactory(pref))[UserLoginViewModel::class.java]
+        val dataStoreViewModel =
+            ViewModelProvider(this, ViewModelFactory(pref))[DataStoreViewModel::class.java]
 
-        userLoginViewModel.getToken().observe(this) {
+        dataStoreViewModel.getToken().observe(this) {
             token = it
             homepageViewModel.getStories(token)
         }
@@ -106,7 +106,7 @@ class HomePageActivity : AppCompatActivity() {
 
     private fun logout() {
         val loginViewModel =
-            ViewModelProvider(this, ViewModelFactory(pref))[UserLoginViewModel::class.java]
+            ViewModelProvider(this, ViewModelFactory(pref))[DataStoreViewModel::class.java]
         loginViewModel.clearDataLogin()
         Toast.makeText(this, R.string.SuccessLogout, Toast.LENGTH_SHORT).show()
         val intent = Intent(this, MainActivity::class.java)

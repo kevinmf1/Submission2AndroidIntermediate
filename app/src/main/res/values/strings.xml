@@ -90,5 +90,5 @@
     <string name="pickLocation">Click map to pick location</string>
     <string name="icon_map_pin">Icon map pin</string>
     <string name="yourLocation">Your Location</string>
-    <string name="title_activity_pick_location2">PickLocationActivity2</string>
+    <string name="start_point">Start Point</string>
 </resources>
