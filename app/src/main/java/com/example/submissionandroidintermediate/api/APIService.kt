@@ -24,6 +24,8 @@ interface APIService {
     fun uploadPicture(
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody,
+        @Part("lat") lat: Float?,
+        @Part("lon") lon: Float?,
         @Header("Authorization") token: String
     ): Call<ResponseDetail>
 }

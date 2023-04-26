@@ -91,4 +91,5 @@
     <string name="icon_map_pin">Icon map pin</string>
     <string name="yourLocation">Your Location</string>
     <string name="start_point">Start Point</string>
+    <string name="accountSuccessCreated">Yipi account successfully created</string>
 </resources>

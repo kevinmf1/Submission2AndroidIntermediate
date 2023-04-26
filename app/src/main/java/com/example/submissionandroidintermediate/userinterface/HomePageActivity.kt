@@ -22,7 +22,9 @@ import com.example.submissionandroidintermediate.viewmodel.DataStoreViewModel
 import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
 
 class HomePageActivity : AppCompatActivity() {
-    private val pref = UserPreferences.getInstance(dataStore)
+    private val pref by lazy {
+        UserPreferences.getInstance(dataStore)
+    }
     private lateinit var binding: ActivityHomePageBinding
     private lateinit var token: String
     private val homepageViewModel: HomePageViewModel by lazy {

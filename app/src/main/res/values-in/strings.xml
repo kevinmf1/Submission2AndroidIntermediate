@@ -91,4 +91,5 @@
     <string name="icon_map_pin">Icon map pin</string>
     <string name="yourLocation">Lokasi Kamu</string>
     <string name="start_point">Start Point</string>
+    <string name="accountSuccessCreated">Yeay akun berhasil dibuat</string>
 </resources>

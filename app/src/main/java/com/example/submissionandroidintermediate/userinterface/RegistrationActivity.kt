@@ -13,15 +13,20 @@ import com.example.submissionandroidintermediate.UserPreferences
 import com.example.submissionandroidintermediate.databinding.ActivityRegistrationBinding
 import com.example.submissionandroidintermediate.dataclass.LoginDataAccount
 import com.example.submissionandroidintermediate.dataclass.RegisterDataAccount
-import com.example.submissionandroidintermediate.viewmodel.MainViewModel
 import com.example.submissionandroidintermediate.viewmodel.DataStoreViewModel
+import com.example.submissionandroidintermediate.viewmodel.MainViewModel
+import com.example.submissionandroidintermediate.viewmodel.MainViewModelFactory
 import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
 
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
 
-    private val mainViewModel: MainViewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
+    private val registerViewModel: MainViewModel by lazy {
+        ViewModelProvider(this, MainViewModelFactory(this))[MainViewModel::class.java]
+    }
+
+    private val loginViewModel: MainViewModel by lazy {
+        ViewModelProvider(this, MainViewModelFactory(this))[MainViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,38 +49,35 @@ class RegistrationActivity : AppCompatActivity() {
             }
         }
 
-        mainViewModel.messageRegist.observe(this) { messageRegist ->
+        registerViewModel.message.observe(this) { messageRegist ->
             responseRegister(
-                mainViewModel.isErrorRegist,
                 messageRegist
             )
         }
 
-        mainViewModel.isLoadingRegist.observe(this) {
+        registerViewModel.isLoading.observe(this) {
             showLoading(it)
         }
 
-        mainViewModel.messageLogin.observe(this) { messageLogin ->
+        loginViewModel.message.observe(this) { messageLogin ->
             responseLogin(
-                mainViewModel.isErrorLogin,
                 messageLogin,
                 dataStoreViewModel
             )
         }
 
-        mainViewModel.isLoadingLogin.observe(this) {
+        loginViewModel.isLoading.observe(this) {
             showLoading(it)
         }
     }
 
     private fun responseLogin(
-        isError: Boolean,
         message: String,
         dataStoreViewModel: DataStoreViewModel
     ) {
-        if (!isError) {
+        if (message.contains("Hello")) {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-            val user = mainViewModel.userLogin.value
+            val user = loginViewModel.userlogin.value
             dataStoreViewModel.saveLoginSession(true)
             dataStoreViewModel.saveToken(user?.loginResult!!.token)
             dataStoreViewModel.saveName(user.loginResult.name)
@@ -85,19 +87,25 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun responseRegister(
-        isError: Boolean,
         message: String,
     ) {
-        if (!isError) {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        if (message == "Yeay akun berhasil dibuat") {
+            Toast.makeText(
+                this,
+                resources.getString(R.string.accountSuccessCreated),
+                Toast.LENGTH_SHORT
+            ).show()
             val userLogin = LoginDataAccount(
                 binding.RegistEmail.text.toString(),
                 binding.RegistPassword.text.toString()
             )
-            mainViewModel.getResponseLogin(userLogin)
+            loginViewModel.login(userLogin)
         } else {
-            if (message == "1") {
-                binding.RegistEmail.setErrorMessage(resources.getString(R.string.emailTaken), binding.RegistEmail.text.toString())
+            if (message.contains("Email yang anda masukan sudah terdaftar")) {
+                binding.RegistEmail.setErrorMessage(
+                    resources.getString(R.string.emailTaken),
+                    binding.RegistEmail.text.toString()
+                )
                 Toast.makeText(this, resources.getString(R.string.emailTaken), Toast.LENGTH_SHORT)
                     .show()
             } else {
@@ -140,7 +148,7 @@ class RegistrationActivity : AppCompatActivity() {
                     password = binding.RegistPassword.text.toString().trim()
                 )
 
-                mainViewModel.getResponseRegister(dataRegisterAccount)
+                registerViewModel.register(dataRegisterAccount)
             } else {
                 if (!binding.RegistName.isNameValid) binding.RegistName.error =
                     resources.getString(R.string.nameNone)

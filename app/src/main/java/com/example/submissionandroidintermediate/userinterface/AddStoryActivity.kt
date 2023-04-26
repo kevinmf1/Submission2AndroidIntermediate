@@ -19,8 +19,9 @@ import androidx.lifecycle.lifecycleScope
 import com.example.submissionandroidintermediate.R
 import com.example.submissionandroidintermediate.UserPreferences
 import com.example.submissionandroidintermediate.databinding.ActivityAddStoryBinding
-import com.example.submissionandroidintermediate.viewmodel.AddStoryViewModel
 import com.example.submissionandroidintermediate.viewmodel.DataStoreViewModel
+import com.example.submissionandroidintermediate.viewmodel.MainViewModel
+import com.example.submissionandroidintermediate.viewmodel.MainViewModelFactory
 import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
 import com.google.android.gms.maps.model.LatLng
 import id.zelory.compressor.Compressor
@@ -47,10 +48,9 @@ class AddStoryActivity : AppCompatActivity() {
     private lateinit var fileFinal: File
     private var latlng: LatLng? = null
 
-    private val addStoryViewModel: AddStoryViewModel by lazy {
-        ViewModelProvider(this)[AddStoryViewModel::class.java]
+    private val addStoryViewModel: MainViewModel by lazy {
+        ViewModelProvider(this, MainViewModelFactory(this))[MainViewModel::class.java]
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -140,7 +140,7 @@ class AddStoryActivity : AppCompatActivity() {
 
                 val desPart = des.toRequestBody("text/plain".toMediaType())
 
-                addStoryViewModel.upload(imageMultipart, desPart, token)
+                addStoryViewModel.upload(imageMultipart, desPart, latlng?.latitude, latlng?.longitude, token)
             }
         }
 

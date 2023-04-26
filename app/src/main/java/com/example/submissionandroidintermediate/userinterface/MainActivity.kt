@@ -18,8 +18,9 @@ import com.example.submissionandroidintermediate.R
 import com.example.submissionandroidintermediate.UserPreferences
 import com.example.submissionandroidintermediate.databinding.ActivityMainBinding
 import com.example.submissionandroidintermediate.dataclass.LoginDataAccount
-import com.example.submissionandroidintermediate.viewmodel.MainViewModel
 import com.example.submissionandroidintermediate.viewmodel.DataStoreViewModel
+import com.example.submissionandroidintermediate.viewmodel.MainViewModel
+import com.example.submissionandroidintermediate.viewmodel.MainViewModelFactory
 import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -27,8 +28,8 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    private val mainViewModel: MainViewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
+    private val loginViewModel: MainViewModel by lazy {
+        ViewModelProvider(this, MainViewModelFactory(this))[MainViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,27 +51,25 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        mainViewModel.messageLogin.observe(this) { message ->
+        loginViewModel.message.observe(this) { message ->
             responseLogin(
-                mainViewModel.isErrorLogin,
                 message,
                 dataStoreViewModel
             )
         }
 
-        mainViewModel.isLoadingLogin.observe(this) {
+        loginViewModel.isLoading.observe(this) {
             showLoading(it)
         }
     }
 
     private fun responseLogin(
-        isError: Boolean,
         message: String,
         dataStoreViewModel: DataStoreViewModel
     ) {
-        if (!isError) {
+        if (message.contains("Hello")) {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-            val user = mainViewModel.userLogin.value
+            val user = loginViewModel.userlogin.value
             dataStoreViewModel.saveLoginSession(true)
             dataStoreViewModel.saveToken(user?.loginResult!!.token)
             dataStoreViewModel.saveName(user.loginResult.name)
@@ -125,7 +124,7 @@ class MainActivity : AppCompatActivity() {
                     binding.CVEmail.text.toString().trim(),
                     binding.PasswordLogin.text.toString().trim()
                 )
-                mainViewModel.getResponseLogin(requestLogin)
+                loginViewModel.login(requestLogin)
             } else {
                 if (!binding.CVEmail.isEmailValid) binding.CVEmail.error =
                     getString(R.string.emailNone)
