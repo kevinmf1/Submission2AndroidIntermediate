@@ -29,6 +29,9 @@ android {
     }
 
     buildTypes {
+        customDebugType {
+            debuggable true
+        }
         debug {
             buildConfigField("String", "API_URL", "\"https://story-api.dicoding.dev/v1/\"")
         }
@@ -44,6 +47,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
     }
 }
 

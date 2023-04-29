@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Story App</string>
-    <string name="login_description">Halo, selamat datang di Story App</string>
+    <string name="login_description">Halo, selamat datang di Aplikasi Cerita</string>
     <string name="iconLogin">Hanya icon hiasan untuk login</string>
     <string name="iconRegister">Hanya icon hiasan untuk register</string>
     <string name="registerDescription">Silahkan masukkan data akun kamu</string>
@@ -8,41 +8,34 @@
     <string name="bottomSplash">Dibuat oleh Bangkit Cohort</string>
     <string name="createAccount">Buat Akun</string>
     <string name="btnFloating">untuk membuat konten baru</string>
-    <string name="noData">Data tidak ditemukan</string>
     <string name="changeLanguage">Ganti Bahasa</string>
     <string name="home">Beranda</string>
-    <string name="error_load">Gagal memuat data. Pesan Error:</string>
-    <string name="refresh">Muat Ulang</string>
-    <string name="scrollView">For scrolling item</string>
-    <string name="detail_title">%1$s\'s Story</string>
+    <string name="scrollView">Untuk melakukan gulir terhadap item</string>
+    <string name="detail_title">Cerita %1$s\'s</string>
     <string name="post_as">Bagikan cerita sebagai </string>
     <string name="post_users">Buat cerita baru</string>
     <string name="message">Pesan  :</string>
 
     <string name="cameraChoose">Kamera</string>
     <string name="galleryChoose">Galeri</string>
-    <string name="descriptionStory">Deskripsi Story</string>
-    <string name="storyImageDesc">Deskripsi Gambar Story</string>
-    <string name="btnPost">Bagikan Story</string>
+    <string name="descriptionStory">Deskripsi Cerita</string>
+    <string name="storyImageDesc">Deskripsi Cerita Gambar</string>
+    <string name="btnPost">Bagikan Cerita</string>
     <string name="choose_picture">Pilih Gambar</string>
-    <string name="choose_camera">Pilih Kamera</string>
 
     <string name="nameUser">Nama</string>
     <string name="timeCreatedContent">13 April 2023, 12:18:54</string>
-    <string name="content">Gambar ini adalah salah satu bagian dari story</string>
-    <string name="imageDataNone">Ditampilkan ketika data kosong</string>
+    <string name="content">Gambar ini adalah salah satu bagian dari Cerita</string>
 
     <string name="email">Masukan email kamu</string>
     <string name="emailFormatWrong">Format email salah</string>
     <string name="emailTaken">Email yang anda masukan sudah terdaftar, silahkan ganti email</string>
-    <string name="failedRegist">Registrasi gagal, silahkan coba lagi</string>
 
     <string name="password">Masukan password kamu</string>
     <string name="passwordConfirm">Konfirmasi password kamu</string>
     <string name="passwordVisible">Lihat Password</string>
     <string name="passwordLess">Password minimal harus 8 karakter</string>
     <string name="passwordNotMatch">Password tidak sama</string>
-    <string name="passwordAccountWrong">Password yang anda masukan salah</string>
 
     <string name="tvLogin">Masuk Akun</string>
     <string name="login_button">Login</string>
@@ -64,32 +57,32 @@
     <string name="SuccessLogout">Berhasil keluar</string>
     <string name="cancelLogout">Batal</string>
 
-    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor maximus nunc, in convallis lorem accumsan in. Suspendisse suscipit sagittis bibendum. In orci tortor, blandit non orci quis, iaculis rutrum mauris. Maecenas nisi lacus, feugiat non libero in, aliquam convallis dolor. Fusce ligula erat, vulputate eget aliquam et, semper ut neque. Pellentesque placerat dolor sit amet ante posuere, et dignissim elit pharetra. Quisque mattis, nisi et posuere luctus, sem ligula hendrerit magna, id suscipit neque ex nec nisi. Integer convallis a urna at sodales. Proin tristique, ligula ac vehicula blandit, massa dolor placerat ante, non laoreet turpis sem nec neque. Mauris pulvinar nisl tincidunt nisi venenatis sodales id a est. Pellentesque sed ex magna. Sed quis est convallis, viverra tortor vitae, facilisis augue. Quisque sed est vel enim facilisis euismod. Nunc molestie urna non est tempus hendrerit vel quis magna. Sed consectetur nulla quis velit cursus, vel venenatis velit dictum.</string>
-    <string name="imageStoryDesc">Ini berisi gambar dari story</string>
-    <string name="dateStory">Story dibuat pada:</string>
+    <string name="imageStoryDesc">Ini berisi gambar dari Cerita</string>
+    <string name="dateStory">Cerita dibuat pada:</string>
 
     <string name="package_name">com.example.submissionandroidintermediate</string>
 
-    <string name="imageStoryUploadDesc">Ini adalah gambar ketika foto dipilih</string>
     <string name="imageSplashDesc">Ini adalah logo bangkit di splashscreen</string>
     <string name="warningAddImage">Upload foto terlebih dahulu</string>
     <string name="warningAddDescription">Tambahkan deskripsi terlebih dahulu</string>
 
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
-    <string name="app_widget_description">This is an app widget description</string>
     <string name="title_activity_maps">MapsActivity</string>
-    <string name="maps">See Maps</string>
-    <string name="storyError">Terdapat kesalahan ketika memuat Story</string>
+    <string name="maps">Liat Peta</string>
 
-    <string name="standardMap">Map Standar</string>
-    <string name="nightMap">Map Malam</string>
+    <string name="standardMap">Peta Standar</string>
+    <string name="nightMap">Peta Malam</string>
 
-    <string name="useMyLocation">Use my location</string>
-    <string name="usePickLocation">Use the location that i pick</string>
-    <string name="pickLocation">Click map to pick location</string>
-    <string name="icon_map_pin">Icon map pin</string>
+    <string name="useMyLocation">Gunakan lokasi saya</string>
+    <string name="usePickLocation">Gunakan lokasi yang saya pilih</string>
+    <string name="pickLocation">Klik pada peta untuk memilih lokasi</string>
+    <string name="icon_map_pin">Pin icon peta</string>
     <string name="yourLocation">Lokasi Kamu</string>
-    <string name="start_point">Start Point</string>
+    <string name="start_point">Titik mulai</string>
     <string name="accountSuccessCreated">Yeay akun berhasil dibuat</string>
+    <string name="tryAgain">Coba lagi</string>
+    <string name="locationNotFound">Lokasi tidak ditemukan. Coba lagi</string>
+
+    <string name="useThisLocation">Gunakan lokasi ini?</string>
+    <string name="yes">Iya</string>
+    <string name="no">Tidak</string>
 </resources>

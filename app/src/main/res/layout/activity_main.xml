@@ -40,6 +40,7 @@
         tools:alpha="1"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/tvLogin"
+        android:contentDescription="@string/iconLogin"
         android:textColor="@color/black"
         android:textSize="23sp"
         app:layout_constraintStart_toStartOf="@+id/tvLoginDescription"

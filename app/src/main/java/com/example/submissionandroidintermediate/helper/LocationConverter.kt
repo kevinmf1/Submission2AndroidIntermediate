@@ -4,7 +4,6 @@ import android.content.Context
 import android.location.Address
 import android.location.Geocoder
 import android.util.Log
-import com.example.submissionandroidintermediate.R
 import com.google.android.gms.maps.model.LatLng
 import java.lang.Exception
 import java.lang.StringBuilder

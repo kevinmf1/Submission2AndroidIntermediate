@@ -119,7 +119,7 @@ class PickLocationActivity : AppCompatActivity(), OnMapReadyCallback {
                     updateButtonStyle(binding.myLocation, false)
                     Toast.makeText(
                         this@PickLocationActivity,
-                        "Location is not found. Try Again",
+                        resources.getString(R.string.locationNotFound),
                         Toast.LENGTH_SHORT
                     ).show()
                     mMap.moveCamera(
@@ -139,7 +139,7 @@ class PickLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    fun updateButtonStyle(button: Button, isEnabled: Boolean) {
+    private fun updateButtonStyle(button: Button, isEnabled: Boolean) {
         if (isEnabled) {
             // Mengaktifkan style buttonEnabled
             button.setBackgroundColor(ContextCompat.getColor(this, R.color.white_500))
@@ -168,12 +168,12 @@ class PickLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         val builder = AlertDialog.Builder(this)
         val alert = builder.create()
         builder
-            .setTitle("Gunakan lokasi ini?")
+            .setTitle(resources.getString(R.string.useThisLocation))
             .setMessage(address)
-            .setPositiveButton("Iya") { _, _ ->
+            .setPositiveButton(resources.getString(R.string.yes)) { _, _ ->
                 returnLocationResult(address, latlng)
             }
-            .setNegativeButton("Tidak") { _, _ ->
+            .setNegativeButton(resources.getString(R.string.no)) { _, _ ->
                 alert.cancel()
             }
             .show()
@@ -201,7 +201,6 @@ class PickLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     companion object {
-        var IRcounter = 1
         var currentLagLng: LatLng? = null
         var pickedPlace: LatLng? = null
         const val DEFAULT_ZOOM = 15.0f

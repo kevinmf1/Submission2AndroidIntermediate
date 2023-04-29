@@ -2,8 +2,10 @@ package com.example.submissionandroidintermediate.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.*
 import com.example.submissionandroidintermediate.api.APIConfig
 import com.example.submissionandroidintermediate.api.APIService
+import com.example.submissionandroidintermediate.database.ListStoryDetail
 import com.example.submissionandroidintermediate.database.StoryDatabase
 import com.example.submissionandroidintermediate.dataclass.*
 import okhttp3.MultipartBody
@@ -16,8 +18,8 @@ class MainRepository(
     private val storyDatabase: StoryDatabase,
     private val apiService: APIService
 ) {
-    private var _stories = MutableLiveData<List<StoryDetail>>()
-    var stories: LiveData<List<StoryDetail>> = _stories
+    private var _storiesWithLocation = MutableLiveData<List<ListStoryDetail>>()
+    var storiesWithLocation: LiveData<List<ListStoryDetail>> = _storiesWithLocation
 
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
@@ -28,11 +30,10 @@ class MainRepository(
     private val _userLogin = MutableLiveData<ResponseLogin>()
     var userlogin: LiveData<ResponseLogin> = _userLogin
 
-
     fun getResponseLogin(loginDataAccount: LoginDataAccount) {
         _isLoading.value = true
         val api = APIConfig.getApiService().loginUser(loginDataAccount)
-        api.enqueue(object : retrofit2.Callback<ResponseLogin> {
+        api.enqueue(object : Callback<ResponseLogin> {
             override fun onResponse(call: Call<ResponseLogin>, response: Response<ResponseLogin>) {
                 _isLoading.value = false
                 val responseBody = response.body()
@@ -97,7 +98,7 @@ class MainRepository(
         token: String
     ) {
         _isLoading.value = true
-        val service = APIConfig.getApiService().uploadPicture(
+        val service = APIConfig.getApiService().addStory(
             photo, des, lat?.toFloat(), lng?.toFloat(), "Bearer $token"
         )
         service.enqueue(object : Callback<ResponseDetail> {
@@ -123,16 +124,19 @@ class MainRepository(
         })
     }
 
-    fun getStories(token: String) {
+    fun getStoriesWithLocation(token: String) {
         _isLoading.value = true
-        val api = APIConfig.getApiService().getStory("Bearer $token")
-        api.enqueue(object : Callback<ResponseStory> {
-            override fun onResponse(call: Call<ResponseStory>, response: Response<ResponseStory>) {
+        val api = APIConfig.getApiService().getLocationStory(32, 1, "Bearer $token")
+        api.enqueue(object : Callback<ResponseLocationStory> {
+            override fun onResponse(
+                call: Call<ResponseLocationStory>,
+                response: Response<ResponseLocationStory>
+            ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        _stories.value = responseBody.listStory
+                        _storiesWithLocation.value = responseBody.listStory
                     }
                     _message.value = responseBody?.message.toString()
 
@@ -141,11 +145,25 @@ class MainRepository(
                 }
             }
 
-            override fun onFailure(call: Call<ResponseStory>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseLocationStory>, t: Throwable) {
                 _isLoading.value = false
                 _message.value = t.message.toString()
             }
         })
+    }
+
+    @ExperimentalPagingApi
+    fun getPagingStories(token: String): LiveData<PagingData<ListStoryDetail>> {
+        val pager = Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            remoteMediator = StoryRemoteMediator(storyDatabase, apiService, token),
+            pagingSourceFactory = {
+                storyDatabase.getListStoryDetailDao().getAllStories()
+            }
+        )
+        return pager.liveData
     }
 
 }

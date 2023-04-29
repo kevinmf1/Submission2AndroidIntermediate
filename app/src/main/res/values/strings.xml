@@ -8,11 +8,8 @@
     <string name="bottomSplash">Created by Bangkit Cohort</string>
     <string name="createAccount">Create Account</string>
     <string name="btnFloating">to create new content</string>
-    <string name="noData">No data found</string>
     <string name="changeLanguage">Change Language</string>
     <string name="home">Home</string>
-    <string name="error_load">Failed to load data. Error message:</string>
-    <string name="refresh">Refresh</string>
     <string name="scrollView">For scrolling item</string>
     <string name="detail_title">%1$s\'s Story</string>
     <string name="post_as">Share story as </string>
@@ -25,24 +22,20 @@
     <string name="storyImageDesc">Story Image Desc</string>
     <string name="btnPost">Share Story</string>
     <string name="choose_picture">Choose Picture</string>
-    <string name="choose_camera">Choose Camera</string>
 
     <string name="nameUser">Name</string>
     <string name="timeCreatedContent">April 13, 2023, 12:18:54</string>
     <string name="content">This image is part of the story</string>
-    <string name="imageDataNone">Displayed when there is no data</string>
 
     <string name="email">Enter your email</string>
     <string name="emailFormatWrong">Wrong email format</string>
     <string name="emailTaken">The email you entered is already registered, please change your email</string>
-    <string name="failedRegist">Registration failed, please try again</string>
 
     <string name="password">Enter your password</string>
     <string name="passwordConfirm">Confirm your password</string>
     <string name="passwordVisible">Show Password</string>
     <string name="passwordLess">Password must be at least 8 characters</string>
     <string name="passwordNotMatch">Passwords don\'t match</string>
-    <string name="passwordAccountWrong">The password you entered is incorrect</string>
 
     <string name="tvLogin">Login</string>
     <string name="login_button">Login</string>
@@ -64,26 +57,20 @@
     <string name="SuccessLogout">Logged out successfully</string>
     <string name="cancelLogout">Cancel</string>
 
-    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor maximus nunc, in convallis lorem accumsan in. Suspendisse suscipit sagittis bibendum. In orci tortor, blandit non orci quis, iaculis rutrum mauris. Maecenas nisi lacus, feugiat non libero in, aliquam convallis dolor. Fusce ligula erat, vulputate eget aliquam et, semper ut neque. Pellentesque placerat dolor sit amet ante posuere, et dignissim elit pharetra. Quisque mattis, nisi et posuere luctus, sem ligula hendrerit magna, id suscipit neque ex nec nisi. Integer convallis a urna at sodales. Proin tristique, ligula ac vehicula blandit, massa dolor placerat ante, non laoreet turpis sem nec neque. Mauris pulvinar nisl tincidunt nisi venenatis sodales id a est. Pellentesque sed ex magna. Sed quis est convallis, viverra tortor vitae, facilisis augue. Quisque sed est vel enim facilisis euismod. Nunc molestie urna non est tempus hendrerit vel quis magna. Sed consectetur nulla quis velit cursus, vel venenatis velit dictum.</string>
     <string name="imageStoryDesc">This contains images from the story</string>
     <string name="dateStory">Story created on:</string>
 
     <string name="package_name">com.example.submissionandroidintermediate</string>
 
-    <string name="imageStoryUploadDesc">This is the image when a photo is selected</string>
     <string name="imageSplashDesc">This is the Bangkit logo on the splash screen</string>
     <string name="warningAddImage">Upload photos first</string>
     <string name="warningAddDescription">Add a description first</string>
 
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
-    <string name="app_widget_description">This is an app widget description</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="maps">See Maps</string>
-    <string name="storyError">Terdapat kesalahan ketika memuat Story</string>
 
-    <string name="standardMap">Map Standar</string>
-    <string name="nightMap">Map Malam</string>
+    <string name="standardMap">Standard Map</string>
+    <string name="nightMap">Night Map</string>
 
     <string name="useMyLocation">Use my location</string>
     <string name="usePickLocation">Use the location that i pick</string>
@@ -92,4 +79,10 @@
     <string name="yourLocation">Your Location</string>
     <string name="start_point">Start Point</string>
     <string name="accountSuccessCreated">Yipi account successfully created</string>
+    <string name="tryAgain">Try Again</string>
+    <string name="locationNotFound">Location is not found. Try Again</string>
+
+    <string name="useThisLocation">Use this location?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

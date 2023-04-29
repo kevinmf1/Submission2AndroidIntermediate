@@ -73,13 +73,14 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_address"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAddress"
             app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toTopOf="@+id/tv_address"
+            app:layout_constraintTop_toTopOf="@+id/tvAddress"
+            android:contentDescription="@string/icon_map_pin"
             app:srcCompat="@drawable/baseline_location_on_24" />
 
         <TextView
-            android:id="@+id/tv_address"
+            android:id="@+id/tvAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

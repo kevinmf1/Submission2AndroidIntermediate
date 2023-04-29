@@ -15,13 +15,29 @@ interface APIService {
     fun loginUser(@Body requestLogin: LoginDataAccount): Call<ResponseLogin>
 
     @GET("stories")
-    fun getStory(
+    fun getLocationStory(
+        @Query("size") size: Int? = null,
+        @Query("location") location: Int? = 0,
         @Header("Authorization") token: String,
-    ): Call<ResponseStory>
+    ): Call<ResponseLocationStory>
+
+    @GET("stories")
+    suspend fun getPagingStory(
+        @Query("page") page: Int? = null,
+        @Query("size") size: Int? = null,
+        @Query("location") location: Int? = 0,
+        @Header("Authorization") token: String,
+    ): ResponsePagingStory
+
+//    @GET("stories")
+//    fun getPagingStory(
+//        @Query("location") location: Int,
+//        @Header("Authorization") token: String
+//    ): Call<ResponseStory>
 
     @Multipart
     @POST("stories")
-    fun uploadPicture(
+    fun addStory(
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody,
         @Part("lat") lat: Float?,

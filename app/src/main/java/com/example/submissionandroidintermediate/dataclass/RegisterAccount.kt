@@ -1,11 +1,7 @@
 package com.example.submissionandroidintermediate.dataclass
 
-import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import com.example.submissionandroidintermediate.database.ListStoryDetail
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
 data class RegisterDataAccount(
     var name: String,
@@ -35,7 +31,7 @@ data class LoginResult(
     var token: String
 )
 
-data class ResponseStory(
+data class ResponseLocationStory(
     @field:SerializedName("error")
     var error: String,
 
@@ -43,16 +39,16 @@ data class ResponseStory(
     var message: String,
 
     @field:SerializedName("listStory")
-    var listStory: List<StoryDetail>
+    var listStory: List<ListStoryDetail>
 )
 
-@Parcelize
-data class StoryDetail(
-    var id: String,
-    var name: String,
-    var description: String,
-    var photoUrl: String,
-    var createdAt: String,
-    var lat: Double,
-    var lon: Double
-) : Parcelable
+data class ResponsePagingStory(
+    @field:SerializedName("error")
+    var error: String,
+
+    @field:SerializedName("message")
+    var message: String,
+
+    @field:SerializedName("listStory")
+    var listStory: List<ListStoryDetail>
+)

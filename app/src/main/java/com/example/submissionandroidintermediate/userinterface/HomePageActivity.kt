@@ -5,21 +5,20 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submissionandroidintermediate.R
 import com.example.submissionandroidintermediate.UserPreferences
+import com.example.submissionandroidintermediate.adapter.LoadingStateAdapter
 import com.example.submissionandroidintermediate.adapter.StoryListAdapter
+import com.example.submissionandroidintermediate.database.ListStoryDetail
 import com.example.submissionandroidintermediate.databinding.ActivityHomePageBinding
-import com.example.submissionandroidintermediate.dataclass.StoryDetail
-import com.example.submissionandroidintermediate.viewmodel.HomePageViewModel
-import com.example.submissionandroidintermediate.viewmodel.DataStoreViewModel
-import com.example.submissionandroidintermediate.viewmodel.ViewModelFactory
+import com.example.submissionandroidintermediate.viewmodel.*
 
 class HomePageActivity : AppCompatActivity() {
     private val pref by lazy {
@@ -27,8 +26,8 @@ class HomePageActivity : AppCompatActivity() {
     }
     private lateinit var binding: ActivityHomePageBinding
     private lateinit var token: String
-    private val homepageViewModel: HomePageViewModel by lazy {
-        ViewModelProvider(this)[HomePageViewModel::class.java]
+    private val homePageViewModel: MainViewModel by lazy {
+        ViewModelProvider(this, MainViewModelFactory(this))[MainViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,51 +44,33 @@ class HomePageActivity : AppCompatActivity() {
 
         val dataStoreViewModel =
             ViewModelProvider(this, ViewModelFactory(pref))[DataStoreViewModel::class.java]
-
         dataStoreViewModel.getToken().observe(this) {
             token = it
-            homepageViewModel.getStories(token)
-        }
-
-        homepageViewModel.message.observe(this) {
-            setUserData(homepageViewModel.stories)
-            showToast(it)
-        }
-
-        homepageViewModel.isLoading.observe(this) {
-            showLoading(it)
+            setUserData(it)
         }
     }
 
-    private fun showToast(msg: String) {
-        if (homepageViewModel.isError) {
-            Toast.makeText(
-                this,
-                "${getString(R.string.error_load)} $msg",
-                Toast.LENGTH_LONG
-            ).show()
+    @OptIn(ExperimentalPagingApi::class)
+    private fun setUserData(token: String) {
+
+        val adapter = StoryListAdapter()
+        binding.rvStories.adapter = adapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                adapter.retry()
+            })
+
+        homePageViewModel.getPagingStories(token).observe(this) {
+            adapter.submitData(lifecycle, it)
         }
-    }
-
-    private fun showNoData(isNoData: Boolean) {
-        binding.noDataFound.visibility = if (isNoData) View.VISIBLE else View.GONE
-        binding.tvNoDataFound.visibility = if (isNoData) View.VISIBLE else View.GONE
-    }
-
-    private fun setUserData(storyList: List<StoryDetail>) {
-        showNoData(storyList.isEmpty())
-
-        val adapter = StoryListAdapter(storyList)
-        binding.rvStories.adapter = adapter
 
         adapter.setOnItemClickCallback(object : StoryListAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: StoryDetail) {
+            override fun onItemClicked(data: ListStoryDetail) {
                 sendSelectedUser(data)
             }
         })
     }
 
-    private fun sendSelectedUser(data: StoryDetail) {
+    private fun sendSelectedUser(data: ListStoryDetail) {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(DetailActivity.EXTRA_STORY, data)
         startActivity(intent)
@@ -98,11 +79,6 @@ class HomePageActivity : AppCompatActivity() {
     private fun ifClicked() {
         binding.btnFloating.setOnClickListener {
             startActivity(Intent(this, AddStoryActivity::class.java))
-        }
-
-        binding.pullRefresh.setOnRefreshListener {
-            homepageViewModel.getStories(token)
-            binding.pullRefresh.isRefreshing = false
         }
     }
 
@@ -123,10 +99,6 @@ class HomePageActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.refreshApp -> {
-                homepageViewModel.getStories(token)
-                true
-            }
             R.id.changeLanguage -> {
                 startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
                 true
@@ -157,9 +129,4 @@ class HomePageActivity : AppCompatActivity() {
             }
             .show()
     }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressBar3.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
-
 }
