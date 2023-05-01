@@ -29,12 +29,6 @@ interface APIService {
         @Header("Authorization") token: String,
     ): ResponsePagingStory
 
-//    @GET("stories")
-//    fun getPagingStory(
-//        @Query("location") location: Int,
-//        @Header("Authorization") token: String
-//    ): Call<ResponseStory>
-
     @Multipart
     @POST("stories")
     fun addStory(

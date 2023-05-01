@@ -53,10 +53,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val dataStoreViewModel =
             ViewModelProvider(this, ViewModelFactory(pref))[DataStoreViewModel::class.java]
         dataStoreViewModel.getToken().observe(this) {
-            mapsViewModel.getStoriesWithLocation(it)
+            mapsViewModel.getStories(it)
         }
 
-        mapsViewModel.storiesWithLocation.observe(this) {
+        mapsViewModel.stories.observe(this) {
             if (it != null) {
                 setMarker(it)
             }

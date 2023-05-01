@@ -16,7 +16,7 @@ import okhttp3.RequestBody
 
 class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
-    val storiesWithLocation: LiveData<List<ListStoryDetail>> = mainRepository.storiesWithLocation
+    val stories: LiveData<List<ListStoryDetail>> = mainRepository.stories
 
     val message: LiveData<String> = mainRepository.message
 
@@ -47,7 +47,7 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         return mainRepository.getPagingStories(token).cachedIn(viewModelScope)
     }
 
-    fun getStoriesWithLocation(token: String) {
-        mainRepository.getStoriesWithLocation(token)
+    fun getStories(token: String) {
+        mainRepository.getStories(token)
     }
 }

@@ -52,6 +52,26 @@ android {
 }
 
 dependencies {
+    //special testing
+    testImplementation "androidx.arch.core:core-testing:2.1.0" // InstantTaskExecutorRule
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2"
+
+    //TestCoroutineDispatcher
+    testImplementation 'org.mockito:mockito-core:3.12.4'
+    testImplementation 'org.mockito:mockito-inline:3.12.4'
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.9.3")
+    testImplementation("io.strikt:strikt-core:0.31.0")
+    androidTestImplementation 'com.squareup.okhttp3:mockwebserver3:5.0.0-alpha.2'
+
+    //special instrumentation testing
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0" // InstantTaskExecutorRule
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2"
+
+    //TestCoroutineDispatcher
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2' //RecyclerViewActions
+    debugImplementation "androidx.fragment:fragment-testing:1.4.1"
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'//IntentsTestRule
 
     //maps
     implementation 'com.google.android.gms:play-services-location:21.0.1'
@@ -63,6 +83,8 @@ dependencies {
 
     implementation 'androidx.room:room-runtime:2.5.1'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     kapt 'androidx.room:room-compiler:2.5.1'
     implementation 'androidx.room:room-ktx:2.5.1'
 

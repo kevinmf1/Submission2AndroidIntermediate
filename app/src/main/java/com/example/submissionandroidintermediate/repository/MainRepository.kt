@@ -18,8 +18,8 @@ class MainRepository(
     private val storyDatabase: StoryDatabase,
     private val apiService: APIService
 ) {
-    private var _storiesWithLocation = MutableLiveData<List<ListStoryDetail>>()
-    var storiesWithLocation: LiveData<List<ListStoryDetail>> = _storiesWithLocation
+    private var _stories = MutableLiveData<List<ListStoryDetail>>()
+    var stories: LiveData<List<ListStoryDetail>> = _stories
 
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
@@ -124,7 +124,7 @@ class MainRepository(
         })
     }
 
-    fun getStoriesWithLocation(token: String) {
+    fun getStories(token: String) {
         _isLoading.value = true
         val api = APIConfig.getApiService().getLocationStory(32, 1, "Bearer $token")
         api.enqueue(object : Callback<ResponseLocationStory> {
@@ -136,7 +136,7 @@ class MainRepository(
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        _storiesWithLocation.value = responseBody.listStory
+                        _stories.value = responseBody.listStory
                     }
                     _message.value = responseBody?.message.toString()
 
