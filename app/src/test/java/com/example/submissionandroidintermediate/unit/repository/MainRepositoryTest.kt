@@ -34,6 +34,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.`when`
 import java.io.File
 
 class MainRepositoryTest {
@@ -44,7 +45,6 @@ class MainRepositoryTest {
     @get:Rule
     var mainDispatcherRule = MainDispatcherRule()
 
-    @Mock
     private lateinit var mainRepository: MainRepository
 
     @Mock
@@ -66,11 +66,9 @@ class MainRepositoryTest {
         mainRepository.getResponseLogin(dummyRequestLogin)
 
         Mockito.verify(mainRepository).getResponseLogin(dummyRequestLogin)
-
-        Mockito.`when`(mainRepository.userlogin).thenReturn(expectedResponseLogin)
+        `when`(mainRepository.userlogin).thenReturn(expectedResponseLogin)
 
         val actualData = mainRepository.userlogin.getOrAwaitValue()
-
         Mockito.verify(mainRepository).userlogin
         assertNotNull(actualData)
         assertEquals(expectedResponseLogin.value, actualData)
@@ -83,8 +81,7 @@ class MainRepositoryTest {
         val expectedLogin = MutableLiveData<ResponseLogin>()
         expectedLogin.value = dummyResponselogin
 
-        Mockito.`when`(mainRepository.userlogin).thenReturn(expectedLogin)
-
+        `when`(mainRepository.userlogin).thenReturn(expectedLogin)
         val actualLoginResponse = mainRepository.userlogin.getOrAwaitValue()
 
         Mockito.verify(mainRepository).userlogin
@@ -101,8 +98,7 @@ class MainRepositoryTest {
         mainRepository.getResponseRegister(dummyRequestRegister)
 
         Mockito.verify(mainRepository).getResponseRegister(dummyRequestRegister)
-
-        Mockito.`when`(mainRepository.message).thenReturn(expectedRegisterMessage)
+        `when`(mainRepository.message).thenReturn(expectedRegisterMessage)
 
         val actualData = mainRepository.message.getOrAwaitValue()
 
@@ -142,7 +138,7 @@ class MainRepositoryTest {
             token
         )
 
-        Mockito.`when`(mainRepository.message).thenReturn(expectedRegisterMessage)
+        `when`(mainRepository.message).thenReturn(expectedRegisterMessage)
 
         val actualRegisterMessage = mainRepository.message.getOrAwaitValue()
 
@@ -161,7 +157,7 @@ class MainRepositoryTest {
         mainRepository.getStories(token)
         Mockito.verify(mainRepository).getStories(token)
 
-        Mockito.`when`(mainRepository.stories).thenReturn(expectedStories)
+        `when`(mainRepository.stories).thenReturn(expectedStories)
 
         val actualStories = mainRepository.stories.getOrAwaitValue()
 
@@ -178,7 +174,7 @@ class MainRepositoryTest {
         val expectedStories = MutableLiveData<List<ListStoryDetail>>()
         expectedStories.value = dummyStories
 
-        Mockito.`when`(mainRepository.stories).thenReturn(expectedStories)
+        `when`(mainRepository.stories).thenReturn(expectedStories)
 
         val actualStories = mainRepository.stories.getOrAwaitValue()
 
@@ -194,7 +190,7 @@ class MainRepositoryTest {
         val expectedRegisterMessage = MutableLiveData<String>()
         expectedRegisterMessage.value = "Story Uploaded"
 
-        Mockito.`when`(mainRepository.message).thenReturn(expectedRegisterMessage)
+        `when`(mainRepository.message).thenReturn(expectedRegisterMessage)
 
         val actualRegisterMessage = mainRepository.message.getOrAwaitValue()
 
@@ -208,7 +204,7 @@ class MainRepositoryTest {
         val expectedLoadingData = MutableLiveData<Boolean>()
         expectedLoadingData.value = true
 
-        Mockito.`when`(mainRepository.isLoading).thenReturn(expectedLoadingData)
+        `when`(mainRepository.isLoading).thenReturn(expectedLoadingData)
 
         val actualLoading = mainRepository.isLoading.getOrAwaitValue()
 
@@ -228,7 +224,7 @@ class MainRepositoryTest {
         val token = "ini token"
         story.value = data
 
-        Mockito.`when`(mainRepository.getPagingStories(token)).thenReturn(story)
+        `when`(mainRepository.getPagingStories(token)).thenReturn(story)
 
         val actualData = mainRepository.getPagingStories(token).getOrAwaitValue()
 

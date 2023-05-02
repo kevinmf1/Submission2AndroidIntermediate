@@ -1,22 +1,9 @@
 package com.example.submissionandroidintermediate.utils
 
 import com.example.submissionandroidintermediate.database.ListStoryDetail
-import com.example.submissionandroidintermediate.database.RemoteKeys
 import com.example.submissionandroidintermediate.dataclass.*
 
 object DataDummy {
-    fun generateDummyRemoteKeys(): List<RemoteKeys> {
-        val newsList = ArrayList<RemoteKeys>()
-        for (i in 1..5) {
-            val keys = RemoteKeys(
-                  "id: $i",
-                i,
-                i + 2
-            )
-            newsList.add(keys)
-        }
-        return newsList
-    }
 
     fun generateDummyNewsEntity(): List<ListStoryDetail> {
         val newsList = ArrayList<ListStoryDetail>()
@@ -33,14 +20,6 @@ object DataDummy {
             newsList.add(stories)
         }
         return newsList
-    }
-
-    fun generateDummyStoryResponse(): ResponsePagingStory {
-        return ResponsePagingStory(
-            "false",
-            "Success",
-            listOf()
-        )
     }
 
     fun generateDummyNewStories(): List<ListStoryDetail> {

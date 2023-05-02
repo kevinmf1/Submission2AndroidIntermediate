@@ -53,7 +53,6 @@
 
     <string name="logout">Log Out</string>
     <string name="logoutDescription">Are you sure you want to log out?</string>
-    <string name="logoutButton">Log Out</string>
     <string name="SuccessLogout">Logged out successfully</string>
     <string name="cancelLogout">Cancel</string>
 

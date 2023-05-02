@@ -124,7 +124,7 @@ class HomePageActivity : AppCompatActivity() {
             .setPositiveButton(getString(R.string.cancelLogout)) { _, _ ->
                 alert.cancel()
             }
-            .setNegativeButton(getString(R.string.logoutButton)) { _, _ ->
+            .setNegativeButton(getString(R.string.yes)) { _, _ ->
                 logout()
             }
             .show()
