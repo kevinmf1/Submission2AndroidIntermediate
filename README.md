@@ -12,4 +12,4 @@ Apa yang diterapkan di dalam project ini
 5. Dan masih banyak lagi 
 
 ### Preview Aplikasi
-![When Light Mode (8)](https://github.com/kevinmf1/Submission2AndroidIntermediate/assets/97342935/8744ee8d-0875-400d-a5c0-2db1694aa749)
+![Preview Application](https://github.com/kevinmf1/Submission2AndroidIntermediate/assets/97342935/0b2becc9-2e21-4503-a01c-cb6ab78c92ab)
